@@ -8,6 +8,7 @@ DEFINES =
 INCLUDE_DIRS = -Isrc/
 CPPFLAGS = $(DEFINES) $(INCLUDE_DIRS)
 LDFLAGS =
+LIBLINKAGE = -lncurses
 
 # Various output files for debugging as well as release versions.
 OUT = bin/term-fun
@@ -18,12 +19,12 @@ ifeq ($(debug), y)
 	DEFINES += -DDEBUG_ON
 endif
 
-%.o: %.cpp
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $< -c -o $@
+%.o: %.cpp curses.h
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $< -c -o $@ 
 
 $(OUT): $(OBJECTS)
 	-mkdir bin
-	$(CXX) $(LDFLAGS) $^ -o $@
+	$(CXX) $(LDFLAGS) $^ -o $@ $(LIBLINKAGE)
 
 .PHONY: build
 build: $(OUT)
