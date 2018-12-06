@@ -9,8 +9,8 @@
 #include <cstdlib>
 
 // Maximum resolution of a sprite bitmap.
-#define SPRITE_MAX_WIDTH        80
-#define SPRITE_MAX_HEIGHT       24
+#define SPRITE_MAX_WIDTH        300
+#define SPRITE_MAX_HEIGHT       200
 
 class Sprite {
 public:

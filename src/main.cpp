@@ -4,29 +4,27 @@
 #include "sprite.h"
 #include "sprite-controller.h"
 #include "utils.h"
+#include "bitmap.h"
 
-static uint8_t bmp_A[4][6] = {
-    {0, 0, 0, '*', 0, 0},
-    {0, 0, '*', 0, '*', 0},
-    {0, '*', '*', '*', '*', 0},
-    {'*',   0, 0, 0, 0, '*'}
-};
+#define SPRITE_WIDTH        20
+#define SPRITE_HEIGHT       10
 
-Sprite my_sprite((uint8_t*)bmp_A, 4, 6);
+Sprite my_sprite((uint8_t*)bmp_aeroplane, SPRITE_HEIGHT, SPRITE_WIDTH);
 SpriteController controller(my_sprite);
 
 int main(int argc, const char *argv[]) {
 	
-    controller.initDisplay(4, 6);
+    controller.initDisplay(SPRITE_HEIGHT, SPRITE_WIDTH);
     
-    controller.moveSprite(getmaxy(stdscr)/2, 0);
+    controller.moveSprite(getmaxy(stdscr)/2, COLS - my_sprite.width());
     controller.drawSprite();
 
-    for(int col = 0; col < 50; col++) {
-        controller.moveSprite(0, col);
+    for(int col = COLS - my_sprite.width() - 1; col >= 0; col--) {
+        controller.moveSprite(0, -1); // Move by 1 position to the right.
         controller.drawSprite();
-        usleep(60000);
+        usleep(10000);
     }
+
     controller.endDisplay();
     return 0;
 }
