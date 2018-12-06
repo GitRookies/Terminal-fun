@@ -42,7 +42,7 @@ void SpriteController :: drawSprite() {
     for(int i = 0; i < m_sprite.height(); ++i) {
         for(int j = 0; j < m_sprite.width(); ++j) {
             if(_bitmap[i][j] != 0) {
-                mvwaddch(m_window, i, j, ACS_DEGREE);   // ACS_BULLET
+                mvwaddch(m_window, i, j, ACS_CKBOARD);   // ACS_BULLET
             }
         }
     }
@@ -53,10 +53,11 @@ void SpriteController :: drawSprite() {
 void SpriteController :: moveSprite(int y_shifts, int x_shifts) {
     werase(m_window);
     wrefresh(m_window);
-    int check = mvwin(m_window, m_window->_begy + y_shifts, m_window->_begx + x_shifts);
+    //int check;
+    mvwin(m_window, m_window->_begy + y_shifts, m_window->_begx + x_shifts);
     wrefresh(m_window);
-    printw("(%d, %d)", check, m_window->_begx);
-    refresh();
+    //printw("(%d, %d)", check, m_window->_begx);
+    //refresh();
     #if 0
     if( (m_window->_begx > 0) )//&& (m_window->_begx < m) )
         m_window->_begx += x_shifts;

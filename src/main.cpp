@@ -22,7 +22,7 @@ int main(int argc, const char *argv[]) {
     for(int col = COLS - my_sprite.width() - 1; col >= 0; col--) {
         controller.moveSprite(0, -1); // Move by 1 position to the right.
         controller.drawSprite();
-        usleep(10000);
+        usleep(20000);
     }
 
     controller.endDisplay();
