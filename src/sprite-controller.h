@@ -16,12 +16,18 @@
 class SpriteController {
 public:
     SpriteController(Sprite& sprite) : m_window(NULL), m_sprite(sprite) {}
-
+    ~SpriteController() {
+        if(m_window)
+            delwin(m_window);
+    }
     void initDisplay(int window_ht, int window_wd);
     void endDisplay(void);
     
     void drawSprite();
 
+    typedef enum{LEFT, RIGHT, UP, DOWN} Direction;
+    void scrollSprite(Direction direction);
+    void moveSprite(int y_shifts, int x_shifts); // x = COL(H), y = ROW(V)
     
 private:
     WINDOW *m_window;
