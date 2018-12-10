@@ -1,3 +1,4 @@
+#include <unistd.h>
 #include "sprite-controller.h"
 
 void SpriteController :: initDisplay(int window_ht, int window_wd) {
@@ -5,7 +6,7 @@ void SpriteController :: initDisplay(int window_ht, int window_wd) {
     //raw();
     cbreak();
     noecho();
-
+    
 #ifdef USE_COLOR
     // Color mode on.
     if(has_colors() == FALSE) {
@@ -81,5 +82,15 @@ void SpriteController :: scrollSprite(Direction direction) {
         case DOWN:
             moveSprite(0, 1);
             break;
+    }
+}
+
+void SpriteController :: simpleScroll(void) {
+    moveSprite(getmaxy(stdscr)/2, COLS - m_sprite.width());
+    drawSprite();
+    for(int col = COLS - m_sprite.width() - 1; col >= 0; col--) {
+        moveSprite(0, -1); // Move by 1 position to the right.
+        drawSprite();
+        usleep(20000);
     }
 }

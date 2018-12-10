@@ -27,6 +27,8 @@ public:
 
     typedef enum{LEFT, RIGHT, UP, DOWN} Direction;
     void scrollSprite(Direction direction);
+    void simpleScroll(void);
+
     void moveSprite(int y_shifts, int x_shifts); // x = COL(H), y = ROW(V)
     
 private:

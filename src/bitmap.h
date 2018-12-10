@@ -4,6 +4,9 @@
  * Define the bitmap arrays in this file.
  */
 
+#ifndef BITMAP_H_
+#define BITMAP_H_
+
 static const uint8_t bmp_A[4][6] = {
     {0, 0, 0, '*', 0, 0},
     {0, 0, '*', 0, '*', 0},
@@ -30,3 +33,5 @@ static const uint8_t bmp_aeroplane[][20] = {
     {0,   0, 0, 0, 0, '*', 0, 0, '*', 0, 0, 0, 0, 0, 0, 0,   '*',   '*', 0, 0},
     {0, 0, 0, 0, 0, 0,  '*', '*', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 };
+
+#endif

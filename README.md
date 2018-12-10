@@ -13,6 +13,10 @@ Tested on Linux only; but expected to be run on Windows without any problem.
   - Windows: pdcurses
 
 # Build
-  `make`
-  
-  `bin/term-fun`
+  Release build:
+    `make`
+  Debug build:
+    `make debug=y`
+
+# Usage
+  `term-fun -h` to see usage.
